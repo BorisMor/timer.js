@@ -1,9 +1,9 @@
 	
 	$scope.secRun = 0;
-	$scope.timeRun = {hour: 0, minute: 0, sec: 0}; // форматированое значение
+	$scope.timeRun = {hour: 0, minute: 0, sec: 0}; // С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 	...
 	
-	// таймер на 5 минут
+	// С‚Р°Р№РјРµСЂ РЅР° 5 РјРёРЅСѓС‚
 	$scope.waitTimeout = timerService.newTimer(300);
 	$scope.waitTimeout.onChange = function(sec ,f) {
 		$scope.timeRun = f;
