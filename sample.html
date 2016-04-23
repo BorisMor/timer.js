@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="classTimer.js"></script>
+    <title>Пример таймера</title>
+</head>
+<body>
+
+<style>
+    body{
+        font-family: Tahoma, Helvetica, Sans-Serif
+    }
+</style>
+
+<h1>Пример таймера и его обертки на Angrular.js</h1>
+
+<script>
+    function runTimer() {
+        var inputSecWork = $('#secWork');
+        var spanSec = $('#sec');
+        var spanTime = $('#time');
+
+        var sec = inputSecWork.val();
+        var timer = new _classTimer(sec);
+
+        timer.onInit = function () {
+            $('#showSec').show();
+            $('#butStart').prop('disabled', true);
+        };
+
+        timer.onEnd = function () {
+            $('#showSec').hide();
+            $('#butStart').prop('disabled', false);
+        };
+
+        timer.onChange = function (sec, f) {
+            spanSec.text(sec);
+            spanTime.text(f.minute + ':' + f.sec);
+        };
+        timer.start();
+    }
+</script>
+
+
+<label>
+    Укажите время (секунды): <input id="secWork" value="90" style="width:50px">
+</label>
+
+<button id="butStart" onclick="runTimer()">Запускаем</button>
+
+<p id="showSec" style="display: none">
+    <span id="sec"></span> сек. <br>
+    <span id="time"></span> минут
+</p>
+
+</body>
+</html>
